@@ -7,7 +7,9 @@ import blackLogo from "Assets/gl_logo.png";
 import whiteLogo from "Assets/gl_logo_white.png";
 import { Link } from "react-router-dom";
 import ThemeToggler from "Components/ThemeToggler";
+import { SizeMe } from "react-sizeme";
 import Item from "../MenuItem";
+
 
 import {
   Navigation,
@@ -30,12 +32,23 @@ const ab = [
   }
 ];
 
+
 const SideNavbar = ({ themeColor }) => (
+
   <Navigation>
     <MenuContent dark={themeColor}>
       <LogoWrapper>
         <Link to="/">
-          {themeColor ? <Logo src={blackLogo} /> : <Logo src={whiteLogo} />}
+          <SizeMe
+            monitorHeight
+          >
+            {({ size }) => (
+              <div>
+                {themeColor ? <Logo src={blackLogo} /> : <Logo src={whiteLogo} />}
+                {size.height}
+              </div>
+            )}
+          </SizeMe>
         </Link>
       </LogoWrapper>
 

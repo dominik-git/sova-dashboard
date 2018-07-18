@@ -7,7 +7,8 @@ module.exports = {
     quotes: ["error", "double"],
     "comma-dangle": ["error", "never"],
     semi: ["error", "always"],
-    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
+    "react/jsx-max-props-per-line": [1, { maximum: 2 }]
   },
   settings: {
     "import/resolver": {

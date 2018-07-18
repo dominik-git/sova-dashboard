@@ -50,8 +50,7 @@ export const StyledLink = styled(NavLink)`
 
 export const MenuContent = styled.div`
   transition: all 0.2s linear;
-  background: ${({ dark }) =>
-    dark ? "rgba(255,255,255,.75)" : "rgba(0,0,0,.75)"};
+  background: ${({ dark }) => (dark ? "rgba(255,255,255,.75)" : "rgba(0,0,0,.75)")};
   width: 100%;
   height: calc(100% + 6em);
   padding: 3em;
@@ -78,8 +77,7 @@ export const MenuItem = styled(NavLink)`
 
 export const TogglerWrapper = styled.div`
   transition: all 0.2s linear;
-  background: ${({ dark }) =>
-    dark ? "rgba(255,255,255,.75)" : "rgba(0,0,0,.75)"};
+  background: ${({ dark }) => (dark ? "rgba(255,255,255,.75)" : "rgba(0,0,0,.75)")};
   width: 100%;
   display: flex;
   justify-content: center;

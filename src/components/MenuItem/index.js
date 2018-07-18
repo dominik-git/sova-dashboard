@@ -1,12 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 import MenuItem from "./styles";
 
-const Item = ({ projectName, id, themeColor }) => (
-  <MenuItem dark={themeColor} to={`/project/${id}`}>
+const Item = ({ projectName, id }) => (
+  <NavLink
+    activeStyle={{
+      fontWeight: "bold",
+      color: "red"
+    }}
+
+    exact to={`/project/${id}`}
+  >
     {projectName}
-  </MenuItem>
+  </NavLink>
 );
 
 Item.propTypes = {
@@ -19,7 +28,5 @@ const mapStateToProps = state => ({
   themeColor: state.themeReducer.themeColor
 });
 
-export default connect(
-  mapStateToProps,
-  null
-)(Item);
+
+export default withRouter(connect(mapStateToProps)(Item));

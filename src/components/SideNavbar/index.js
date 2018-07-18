@@ -7,19 +7,18 @@ import blackLogo from "Assets/gl_logo.png";
 import whiteLogo from "Assets/gl_logo_white.png";
 import { Link } from "react-router-dom";
 import ThemeToggler from "Components/ThemeToggler";
-import { SizeMe } from "react-sizeme";
+import Logo from "Components/Logo";
 import Item from "../MenuItem";
-
 
 import {
   Navigation,
-  Logo,
-  LogoWrapper,
   StyledLink,
   MenuContent,
   TogglerWrapper,
-  MenuItem
+  MenuItem,
+  ItemsWrapper
 } from "./styles";
+import ThemeActions from "../../redux/actions/theme.action";
 
 const ab = [
   {
@@ -33,75 +32,80 @@ const ab = [
 ];
 
 
-const SideNavbar = ({ themeColor }) => (
+const SideNavbar = ({ themeColor, compHeightAction }) => (
 
   <Navigation>
     <MenuContent dark={themeColor}>
-      <LogoWrapper>
-        <Link to="/">
-          <SizeMe
-            monitorHeight
-          >
-            {({ size }) => (
-              <div>
-                {themeColor ? <Logo src={blackLogo} /> : <Logo src={whiteLogo} />}
-                {size.height}
-              </div>
-            )}
-          </SizeMe>
-        </Link>
-      </LogoWrapper>
+      {themeColor
+        ? (
+          <Link to="/">
+            <Logo
+              onSize={(size) => { compHeightAction(size.height); }}
+              logo={blackLogo}
+            />
+          </Link>
+        ) : (
+          <Link to="/">
+            <Logo
+              onSize={(size) => { compHeightAction(size.height); }}
+              logo={whiteLogo}
+            />
+          </Link>
 
-      <StyledLink
-        dark={themeColor} id="home"
-        to="#"
-      >
+        )}
+
+      <ItemsWrapper>
+        <StyledLink
+          dark={themeColor} id="home"
+          to="#"
+        >
         Home
-      </StyledLink>
+        </StyledLink>
 
-      <UncontrolledCollapse toggler="#home">
-        <Card>
-          {ab.map(item => (
-            <CardBody key={item.id}>
-              <Item
-                dark={themeColor} id={item.id}
-                projectName={item.name}
-              />
-            </CardBody>
-          ))}
-        </Card>
-      </UncontrolledCollapse>
+        <UncontrolledCollapse toggler="#home">
+          <Card>
+            {ab.map(item => (
+              <CardBody key={item.id}>
+                <Item
+                  dark={themeColor} id={item.id}
+                  projectName={item.name}
+                />
+              </CardBody>
+            ))}
+          </Card>
+        </UncontrolledCollapse>
 
-      <StyledLink
-        dark={themeColor} id="scoreCard"
-        to="/scorecard"
-        activeStyle={{
-          borderLeft: "2px solid #f76f39",
-          paddingLeft: "0.3em"
-        }}
-      >
+        <StyledLink
+          dark={themeColor} id="scoreCard"
+          to="/scorecard"
+          activeStyle={{
+            borderLeft: "2px solid #f76f39",
+            paddingLeft: "0.3em"
+          }}
+        >
         Score Card
-      </StyledLink>
+        </StyledLink>
 
-      <StyledLink
-        dark={themeColor} id="settings"
-        to="#"
-      >
+        <StyledLink
+          dark={themeColor} id="settings"
+          to="#"
+        >
         Settings
-      </StyledLink>
-      <UncontrolledCollapse toggler="#settings">
-        <Card>
-          <CardBody>
-            <MenuItem
-              dark={themeColor}
-              activeStyle={{ borderLeft: "2px solid #f76f39" }}
-              to="/usermanagment"
-            >
+        </StyledLink>
+        <UncontrolledCollapse toggler="#settings">
+          <Card>
+            <CardBody>
+              <MenuItem
+                dark={themeColor}
+                activeStyle={{ borderLeft: "2px solid #f76f39" }}
+                to="/usermanagment"
+              >
               User Managment
-            </MenuItem>
-          </CardBody>
-        </Card>
-      </UncontrolledCollapse>
+              </MenuItem>
+            </CardBody>
+          </Card>
+        </UncontrolledCollapse>
+      </ItemsWrapper>
     </MenuContent>
     <TogglerWrapper dark={themeColor} style={{ alignSelf: "flex-end" }}>
       <ThemeToggler />
@@ -110,12 +114,18 @@ const SideNavbar = ({ themeColor }) => (
 );
 
 SideNavbar.propTypes = {
-  themeColor: PropTypes.bool.isRequired
+  themeColor: PropTypes.bool.isRequired,
+  compHeightAction: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  themeColor: state.themeReducer.themeColor
+  themeColor: state.themeReducer.themeColor,
+  logoHeight: state.themeReducer.logoHeight
+});
+
+const mapDispatchToProps = dispatch => ({
+  compHeightAction: randomString => dispatch(ThemeActions.compHeightAction(randomString))
 });
 
 
-export default withRouter(connect(mapStateToProps)(SideNavbar));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideNavbar));

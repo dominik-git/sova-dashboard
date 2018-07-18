@@ -7,7 +7,15 @@ function themeColorAction(booleanValue) {
   };
 }
 
+function compHeightAction(string) {
+  return {
+    type: ThemeConst.COMP_HEIGHT,
+    payload: string
+  };
+}
+
 const ThemeActions = {
-  themeColorAction
+  themeColorAction,
+  compHeightAction
 };
 export default ThemeActions;

@@ -17,18 +17,6 @@ export const Navigation = styled.nav`
   transition: all 0.2s linear;
   `;
 
-export const LogoWrapper = styled.div`
-  width: 100%;
-  border-bottom: 2px solid #f76f39;
-  padding-bottom: 0.5em;
-  margin-bottom: 2em;
-  `;
-
-export const Logo = styled.img`
-  transition: all 0.2s linear;
-  width: 100%;
-`;
-
 export const StyledLink = styled(NavLink)`
   width: 100%;
   text-transform: uppercase;
@@ -55,6 +43,12 @@ export const MenuContent = styled.div`
   width: 100%;
   height: calc(100% + 6em);
   padding: 3em;
+`;
+
+export const ItemsWrapper = styled.div`
+  padding-top: 2em;
+  border-top: 2px solid #f76f39;
+
 `;
 
 export const MenuItem = styled(NavLink)`

@@ -46,8 +46,7 @@ const mapStateToProps = state => ({
   themeColor: state.themeReducer.themeColor
 });
 const mapDispatchToProps = dispatch => ({
-  themeColorAction: randomString =>
-    dispatch(ThemeActions.themeColorAction(randomString))
+  themeColorAction: randomString => dispatch(ThemeActions.themeColorAction(randomString))
 });
 export default connect(
   mapStateToProps,

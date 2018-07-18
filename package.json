@@ -55,6 +55,7 @@
     "react-chartjs-2": "^2.7.2",
     "react-chartjs2": "^1.2.1",
     "react-dom": "^16.4.1",
+    "react-measure": "^2.0.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

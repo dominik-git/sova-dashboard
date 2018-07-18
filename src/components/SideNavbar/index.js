@@ -35,7 +35,7 @@ const SideNavbar = ({ themeColor }) => (
     <MenuContent dark={themeColor}>
       <LogoWrapper>
         <Link to="/">
-          {themeColor ? <Logo src={blackLogo} /> : <Logo src={whiteLogo} />}
+          {themeColor ? <Logo onChange={(e) => { console.log(e.currentTarget.offsetWidth); }} src={blackLogo} /> : <Logo src={whiteLogo} />}
         </Link>
       </LogoWrapper>
 
@@ -62,6 +62,10 @@ const SideNavbar = ({ themeColor }) => (
       <StyledLink
         dark={themeColor} id="scoreCard"
         to="/scorecard"
+        activeStyle={{
+          borderLeft: "2px solid #f76f39",
+          paddingLeft: "0.3em"
+        }}
       >
         Score Card
       </StyledLink>
@@ -75,7 +79,11 @@ const SideNavbar = ({ themeColor }) => (
       <UncontrolledCollapse toggler="#settings">
         <Card>
           <CardBody>
-            <MenuItem dark={themeColor} to="/usermanagment">
+            <MenuItem
+              dark={themeColor}
+              activeStyle={{ borderLeft: "2px solid #f76f39" }}
+              to="/usermanagment"
+            >
               User Managment
             </MenuItem>
           </CardBody>

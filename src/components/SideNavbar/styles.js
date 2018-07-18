@@ -15,23 +15,24 @@ export const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
   transition: all 0.2s linear;
-`;
+  `;
 
 export const LogoWrapper = styled.div`
   width: 100%;
   border-bottom: 2px solid #f76f39;
   padding-bottom: 0.5em;
   margin-bottom: 2em;
-`;
+  `;
 
 export const Logo = styled.img`
+  transition: all 0.2s linear;
   width: 100%;
 `;
 
 export const StyledLink = styled(NavLink)`
   width: 100%;
   text-transform: uppercase;
-  padding: 0.3em 0;
+  margin: 0.3em 0;
   display: inline-block;
   text-decoration: none;
   color: ${({ dark }) => (dark ? "#333" : "#fff")};

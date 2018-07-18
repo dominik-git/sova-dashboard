@@ -1,17 +1,19 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { Switch, Route } from "react-router-dom";
-import Dashboard from "Containers/Dashboard";
-// import Loadable from "@7rulnik/react-loadable";
-// const LoadableComponent = Loadable({
-//   loader: LoginPage,
-//   loading: Loading
-// });
+import Loadable from "@7rulnik/react-loadable";
+import Loading from "Components/LoadingPage";
+
+const LoadableComponent = Loadable({
+  loader: () => import("Containers/Dashboard"),
+  loading: Loading
+});
+
 const App = () => (
   <Switch>
     <Route
       path="/"
-      component={Dashboard}
+      component={LoadableComponent}
     />
   </Switch>
 );

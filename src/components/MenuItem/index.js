@@ -2,20 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
 import MenuItem from "./styles";
 
-const Item = ({ projectName, id }) => (
-  <NavLink
-    activeStyle={{
-      fontWeight: "bold",
-      color: "red"
-    }}
-
+const Item = ({ projectName, id, themeColor }) => (
+  <MenuItem
+    dark={themeColor}
+    activeStyle={{ borderLeft: "2px solid #f76f39" }}
     exact to={`/project/${id}`}
   >
     {projectName}
-  </NavLink>
+  </MenuItem>
 );
 
 Item.propTypes = {

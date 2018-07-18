@@ -35,7 +35,7 @@ const SideNavbar = ({ themeColor }) => (
     <MenuContent dark={themeColor}>
       <LogoWrapper>
         <Link to="/">
-          {themeColor ? <Logo onChange={(e) => { console.log(e.currentTarget.offsetWidth); }} src={blackLogo} /> : <Logo src={whiteLogo} />}
+          {themeColor ? <Logo src={blackLogo} /> : <Logo src={whiteLogo} />}
         </Link>
       </LogoWrapper>
 

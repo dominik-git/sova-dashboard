@@ -71,6 +71,7 @@ export const MenuItem = styled(NavLink)`
 `;
 
 export const TogglerWrapper = styled.div`
+  align-self: flex-end;
   transition: all 0.2s linear;
   background: ${({ dark }) => (dark ? "rgba(255,255,255,.75)" : "rgba(0,0,0,.75)")};
   width: 100%;

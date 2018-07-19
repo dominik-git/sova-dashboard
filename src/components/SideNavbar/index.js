@@ -8,6 +8,7 @@ import whiteLogo from "Assets/gl_logo_white.png";
 import { Link } from "react-router-dom";
 import ThemeToggler from "Components/ThemeToggler";
 import Logo from "Components/Logo";
+import ThemeActions from "Actions/theme.action";
 import Item from "../MenuItem";
 
 import {
@@ -18,7 +19,6 @@ import {
   MenuItem,
   ItemsWrapper
 } from "./styles";
-import ThemeActions from "../../redux/actions/theme.action";
 
 const ab = [
   {
@@ -31,6 +31,12 @@ const ab = [
   }
 ];
 
+const stylesLink = {
+  borderLeft: "2px solid #f76f39",
+  paddingLeft: "0.3em"
+};
+
+const stylesItem = { borderLeft: "2px solid #f76f39" };
 
 const SideNavbar = ({ themeColor, compHeightAction }) => (
 
@@ -42,6 +48,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
             <Logo
               onSize={(size) => { compHeightAction(size.height); }}
               logo={blackLogo}
+              dark={themeColor}
             />
           </Link>
         ) : (
@@ -49,6 +56,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
             <Logo
               onSize={(size) => { compHeightAction(size.height); }}
               logo={whiteLogo}
+              dark={themeColor}
             />
           </Link>
 
@@ -56,12 +64,12 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
 
       <ItemsWrapper>
         <StyledLink
-          dark={themeColor} id="home"
+          dark={themeColor}
+          id="home"
           to="#"
         >
         Home
         </StyledLink>
-
         <UncontrolledCollapse toggler="#home">
           <Card>
             {ab.map(item => (
@@ -78,10 +86,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
         <StyledLink
           dark={themeColor} id="scoreCard"
           to="/scorecard"
-          activeStyle={{
-            borderLeft: "2px solid #f76f39",
-            paddingLeft: "0.3em"
-          }}
+          activeStyle={stylesLink}
         >
         Score Card
         </StyledLink>
@@ -97,7 +102,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
             <CardBody>
               <MenuItem
                 dark={themeColor}
-                activeStyle={{ borderLeft: "2px solid #f76f39" }}
+                activeStyle={stylesItem}
                 to="/usermanagment"
               >
               User Managment
@@ -107,7 +112,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
         </UncontrolledCollapse>
       </ItemsWrapper>
     </MenuContent>
-    <TogglerWrapper dark={themeColor} style={{ alignSelf: "flex-end" }}>
+    <TogglerWrapper dark={themeColor}>
       <ThemeToggler />
     </TogglerWrapper>
   </Navigation>
@@ -124,7 +129,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  compHeightAction: randomString => dispatch(ThemeActions.compHeightAction(randomString))
+  compHeightAction: height => dispatch(ThemeActions.compHeightAction(height))
 });
 
 

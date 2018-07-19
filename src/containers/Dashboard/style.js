@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
     padding: 3em;
     transition: all .2s linear;
     height: 100%;
-    background: ${({ dark }) => (dark ? "rgba(255,255,255,.75)" : "#222")};
+    background: ${({ dark }) => (dark ? "#fff" : "#111")};
 `;
 
 export const DashboardWrapper = styled.div`

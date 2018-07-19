@@ -1,9 +1,9 @@
 import ThemeConst from "Consts/theme.const";
-import CompConts from "Consts/theme.const";
 
 const initialState = {
   themeColor: true,
-  logoHeight: ""
+  logoHeight: "",
+  upDown: false
 };
 
 function themeReducer(state = initialState, action = {}) {
@@ -13,9 +13,14 @@ function themeReducer(state = initialState, action = {}) {
         themeColor: action.payload
       });
 
-    case CompConts.COMP_HEIGHT:
+    case ThemeConst.COMP_HEIGHT:
       return Object.assign({}, state, {
         logoHeight: action.payload
+      });
+
+    case ThemeConst.UP_DOWN:
+      return Object.assign({}, state, {
+        upDown: action.payload
       });
 
     default:

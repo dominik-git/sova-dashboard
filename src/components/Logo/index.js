@@ -4,11 +4,12 @@ import PropTypes from "prop-types";
 
 import { LogoWrapper, Logo } from "./styles";
 
+const styles = { width: "100%" };
 
 const LogoComp = ({ logo }) => (
   <LogoWrapper>
     <Logo
-      style={{ width: "100%" }}
+      style={styles}
       src={logo}
       alt="globallogic"
     />

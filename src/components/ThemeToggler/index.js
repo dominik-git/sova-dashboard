@@ -9,23 +9,25 @@ const ThemeToggler = ({ themeColor, themeColorAction }) => {
     borderRadius: 2
   };
 
+  const toggleStyles = {
+    activeThumb: {
+      base: "#fff"
+    },
+    inactiveThumb: {
+      base: "#f76f39"
+    },
+    active: {
+      base: "#f76f39"
+    },
+    inactive: {
+      base: "#222"
+    }
+  };
+
   return (
     <div>
       <ToggleButton
-        colors={{
-          activeThumb: {
-            base: "#fff"
-          },
-          inactiveThumb: {
-            base: "#f76f39"
-          },
-          active: {
-            base: "#f76f39"
-          },
-          inactive: {
-            base: "#222"
-          }
-        }}
+        colors={toggleStyles}
         activeLabel="light"
         trackStyle={styles}
         thumbStyle={styles}
@@ -46,7 +48,7 @@ const mapStateToProps = state => ({
   themeColor: state.themeReducer.themeColor
 });
 const mapDispatchToProps = dispatch => ({
-  themeColorAction: randomString => dispatch(ThemeActions.themeColorAction(randomString))
+  themeColorAction: color => dispatch(ThemeActions.themeColorAction(color))
 });
 export default connect(
   mapStateToProps,

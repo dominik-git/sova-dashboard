@@ -27,6 +27,7 @@ const ThemeToggler = ({ themeColor, themeColorAction }) => {
   return (
     <div>
       <ToggleButton
+       
         colors={toggleStyles}
         activeLabel="light"
         trackStyle={styles}

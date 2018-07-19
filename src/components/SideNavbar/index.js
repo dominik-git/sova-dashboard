@@ -31,6 +31,7 @@ const ab = [
   }
 ];
 
+
 const stylesLink = {
   borderLeft: "2px solid #f76f39",
   paddingLeft: "0.3em"
@@ -42,6 +43,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
 
   <Navigation>
     <MenuContent dark={themeColor}>
+
       {themeColor
         ? (
           <Link to="/">
@@ -60,6 +62,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
             />
           </Link>
 
+
         )}
 
       <ItemsWrapper>
@@ -69,6 +72,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
           to="#"
         >
         Home
+
         </StyledLink>
         <UncontrolledCollapse toggler="#home">
           <Card>
@@ -83,19 +87,23 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
           </Card>
         </UncontrolledCollapse>
 
+
         <StyledLink
           dark={themeColor} id="scoreCard"
           to="/scorecard"
           activeStyle={stylesLink}
         >
         Score Card
+
         </StyledLink>
+
 
         <StyledLink
           dark={themeColor} id="settings"
           to="#"
         >
         Settings
+
         </StyledLink>
         <UncontrolledCollapse toggler="#settings">
           <Card>
@@ -106,12 +114,14 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
                 to="/usermanagment"
               >
               User Managment
+
               </MenuItem>
             </CardBody>
           </Card>
         </UncontrolledCollapse>
       </ItemsWrapper>
     </MenuContent>
+
     <TogglerWrapper dark={themeColor}>
       <ThemeToggler />
     </TogglerWrapper>

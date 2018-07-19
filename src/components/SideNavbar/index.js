@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 import ThemeToggler from "Components/ThemeToggler";
 import Logo from "Components/Logo";
 import ThemeActions from "Actions/theme.action";
+import DropdownActions from "Actions/dropdown.action";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 import Item from "../MenuItem";
 
 import {
@@ -33,12 +37,19 @@ const ab = [
 
 const stylesLink = {
   borderLeft: "2px solid #f76f39",
-  paddingLeft: "0.3em"
+  paddingLeft: "0.4em"
 };
 
 const stylesItem = { borderLeft: "2px solid #f76f39" };
 
-const SideNavbar = ({ themeColor, compHeightAction }) => (
+const SideNavbar = ({
+  themeColor,
+  compHeightAction,
+  homeDropdown,
+  homeDropdownAction,
+  settingsDropdown,
+  settingsDropdownAction
+}) => (
 
   <Navigation>
     <MenuContent dark={themeColor}>
@@ -64,11 +75,19 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
 
       <ItemsWrapper>
         <StyledLink
+          onClick={() => homeDropdownAction(!homeDropdown)}
           dark={themeColor}
           id="home"
           to="#"
         >
-        Home
+          <span style={{ paddingRight: 5 }}>
+Home
+          </span>
+          {
+          homeDropdown
+            ? <FontAwesomeIcon icon="caret-up" />
+            : <FontAwesomeIcon icon="caret-down" />
+        }
         </StyledLink>
         <UncontrolledCollapse toggler="#home">
           <Card>
@@ -92,10 +111,18 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
         </StyledLink>
 
         <StyledLink
+          onClick={() => settingsDropdownAction(!settingsDropdown)}
           dark={themeColor} id="settings"
           to="#"
         >
-        Settings
+          <span style={{ paddingRight: 5 }}>
+Settings
+          </span>
+          {
+          settingsDropdown
+            ? <FontAwesomeIcon icon="caret-up" />
+            : <FontAwesomeIcon icon="caret-down" />
+        }
         </StyledLink>
         <UncontrolledCollapse toggler="#settings">
           <Card>
@@ -120,16 +147,24 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
 
 SideNavbar.propTypes = {
   themeColor: PropTypes.bool.isRequired,
-  compHeightAction: PropTypes.func.isRequired
+  compHeightAction: PropTypes.func.isRequired,
+  homeDropdown: PropTypes.bool.isRequired,
+  homeDropdownAction: PropTypes.func.isRequired,
+  settingsDropdown: PropTypes.bool.isRequired,
+  settingsDropdownAction: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   themeColor: state.themeReducer.themeColor,
-  logoHeight: state.themeReducer.logoHeight
+  logoHeight: state.themeReducer.logoHeight,
+  homeDropdown: state.dropdownReducer.home,
+  settingsDropdown: state.dropdownReducer.settings
 });
 
 const mapDispatchToProps = dispatch => ({
-  compHeightAction: height => dispatch(ThemeActions.compHeightAction(height))
+  compHeightAction: height => dispatch(ThemeActions.compHeightAction(height)),
+  homeDropdownAction: home => dispatch(DropdownActions.homeAction(home)),
+  settingsDropdownAction: settings => dispatch(DropdownActions.settingsAction(settings))
 });
 
 

@@ -3,17 +3,17 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { UncontrolledCollapse, Card } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ThemeActions from "Actions/theme.action";
+import DropdownActions from "Actions/dropdown.action";
 import {
   Wrapper, UserIcon, Letter, Logout
 } from "./styles";
 
 const TopMenu = ({
-  logoHeight, themeColor, upDown, upDownAction
+  logoHeight, themeColor, logout, logoutAction
 }) => (
   <Wrapper height={logoHeight}>
     <UserIcon
-      onClick={() => upDownAction(!upDown)}
+      onClick={() => logoutAction(!logout)}
       height={logoHeight}
     >
       <Letter
@@ -24,7 +24,7 @@ const TopMenu = ({
 Hello Dominik
         </span>
         {
-          upDown
+          logout
             ? <FontAwesomeIcon icon="caret-up" />
             : <FontAwesomeIcon icon="caret-down" />
         }
@@ -47,19 +47,19 @@ Hello Dominik
 TopMenu.propTypes = {
   logoHeight: PropTypes.number.isRequired,
   themeColor: PropTypes.bool.isRequired,
-  upDown: PropTypes.bool.isRequired,
-  upDownAction: PropTypes.func.isRequired
+  logout: PropTypes.bool.isRequired,
+  logoutAction: PropTypes.func.isRequired
 
 };
 
 const mapStateToProps = state => ({
   logoHeight: state.themeReducer.logoHeight,
   themeColor: state.themeReducer.themeColor,
-  upDown: state.themeReducer.upDown
+  logout: state.dropdownReducer.logout
 });
 
 const mapDispatchToProps = dispatch => ({
-  upDownAction: icon => dispatch(ThemeActions.upDownAction(icon))
+  logoutAction: icon => dispatch(DropdownActions.logoutAction(icon))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopMenu);

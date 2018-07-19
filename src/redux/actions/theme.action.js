@@ -14,17 +14,9 @@ function compHeightAction(string) {
   };
 }
 
-function upDownAction(boolean) {
-  return {
-    type: ThemeConst.UP_DOWN,
-    payload: boolean
-  };
-}
-
 const ThemeActions = {
   themeColorAction,
-  compHeightAction,
-  upDownAction
+  compHeightAction
 };
 
 export default ThemeActions;

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    display:flex;
     width:80%;
     padding: 3em;
     transition: all .2s linear;

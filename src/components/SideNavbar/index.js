@@ -35,12 +35,14 @@ const ab = [
   }
 ];
 
+
 const stylesLink = {
   borderLeft: "2px solid #f76f39",
   paddingLeft: "0.4em"
 };
 
 const stylesItem = { borderLeft: "2px solid #f76f39" };
+
 
 const SideNavbar = ({
   themeColor,
@@ -53,6 +55,7 @@ const SideNavbar = ({
 
   <Navigation>
     <MenuContent dark={themeColor}>
+
       {themeColor
         ? (
           <Link to="/">
@@ -71,6 +74,7 @@ const SideNavbar = ({
             />
           </Link>
 
+
         )}
 
       <ItemsWrapper>
@@ -80,6 +84,7 @@ const SideNavbar = ({
           id="home"
           to="#"
         >
+        
           <span style={{ paddingRight: 5 }}>
 Home
           </span>
@@ -88,6 +93,7 @@ Home
             ? <FontAwesomeIcon icon="caret-up" />
             : <FontAwesomeIcon icon="caret-down" />
         }
+
         </StyledLink>
         <UncontrolledCollapse toggler="#home">
           <Card>
@@ -102,19 +108,23 @@ Home
           </Card>
         </UncontrolledCollapse>
 
+
         <StyledLink
           dark={themeColor} id="scoreCard"
           to="/scorecard"
           activeStyle={stylesLink}
         >
         Score Card
+
         </StyledLink>
+
 
         <StyledLink
           onClick={() => settingsDropdownAction(!settingsDropdown)}
           dark={themeColor} id="settings"
           to="#"
         >
+        
           <span style={{ paddingRight: 5 }}>
 Settings
           </span>
@@ -123,6 +133,7 @@ Settings
             ? <FontAwesomeIcon icon="caret-up" />
             : <FontAwesomeIcon icon="caret-down" />
         }
+
         </StyledLink>
         <UncontrolledCollapse toggler="#settings">
           <Card>
@@ -133,12 +144,14 @@ Settings
                 to="/usermanagment"
               >
               User Managment
+
               </MenuItem>
             </CardBody>
           </Card>
         </UncontrolledCollapse>
       </ItemsWrapper>
     </MenuContent>
+
     <TogglerWrapper dark={themeColor}>
       <ThemeToggler />
     </TogglerWrapper>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const MenuItem = styled(NavLink)`
   transition: all 0.2s linear;
-  color: ${({ dark }) => (dark ? "#555" : "#fff")};
+  color: ${({ dark }) => (dark ? props => props.theme.darkColor.darkGrey :  props => props.theme.neutralColor.white)};
   cursor: pointer;
   width: 100%;
   display: inline-block;
@@ -11,12 +11,11 @@ const MenuItem = styled(NavLink)`
   font-size: 1.15em;
   &:hover {
     text-decoration: none;
-    color: ${({ dark }) => (dark ? "#999" : "#a3a3a3")};
+    color: ${({ dark }) => (dark ?  props => props.theme.lightColor.lightGrey : props => props.theme.lightColor.lighterGrey)};
   }
   &:focus {
-    color: ${({ dark }) => (dark ? "#555" : "#fff")};
+    color: ${({ dark }) => (dark ? props => props.theme.darkColor.darkGrey :  props => props.theme.neutralColor.white)};
     text-decoration: none;
   }
 `;
-
 export default MenuItem;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Wrapper, Loading } from "./styles";
 import gif from "Assets/loading.gif";
+import { Wrapper, Loading } from "./styles";
 
 class LoadingPage extends Component {
   render() {

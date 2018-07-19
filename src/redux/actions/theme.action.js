@@ -7,7 +7,24 @@ function themeColorAction(booleanValue) {
   };
 }
 
+function compHeightAction(string) {
+  return {
+    type: ThemeConst.COMP_HEIGHT,
+    payload: string
+  };
+}
+
+function upDownAction(boolean) {
+  return {
+    type: ThemeConst.UP_DOWN,
+    payload: boolean
+  };
+}
+
 const ThemeActions = {
-  themeColorAction
+  themeColorAction,
+  compHeightAction,
+  upDownAction
 };
+
 export default ThemeActions;

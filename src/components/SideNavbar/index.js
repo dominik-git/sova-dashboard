@@ -7,16 +7,17 @@ import blackLogo from "Assets/gl_logo.png";
 import whiteLogo from "Assets/gl_logo_white.png";
 import { Link } from "react-router-dom";
 import ThemeToggler from "Components/ThemeToggler";
+import Logo from "Components/Logo";
+import ThemeActions from "Actions/theme.action";
 import Item from "../MenuItem";
 
 import {
   Navigation,
-  Logo,
-  LogoWrapper,
   StyledLink,
   MenuContent,
   TogglerWrapper,
-  MenuItem
+  MenuItem,
+  ItemsWrapper
 } from "./styles";
 
 const ab = [
@@ -30,79 +31,106 @@ const ab = [
   }
 ];
 
-const SideNavbar = ({ themeColor }) => (
+const stylesLink = {
+  borderLeft: "2px solid #f76f39",
+  paddingLeft: "0.3em"
+};
+
+const stylesItem = { borderLeft: "2px solid #f76f39" };
+
+const SideNavbar = ({ themeColor, compHeightAction }) => (
+
   <Navigation>
     <MenuContent dark={themeColor}>
-      <LogoWrapper>
-        <Link to="/">
-          {themeColor ? <Logo onChange={(e) => { console.log(e.currentTarget.offsetWidth); }} src={blackLogo} /> : <Logo src={whiteLogo} />}
-        </Link>
-      </LogoWrapper>
-
-      <StyledLink
-        dark={themeColor} id="home"
-        to="#"
-      >
-        Home
-      </StyledLink>
-
-      <UncontrolledCollapse toggler="#home">
-        <Card>
-          {ab.map(item => (
-            <CardBody key={item.id}>
-              <Item
-                dark={themeColor} id={item.id}
-                projectName={item.name}
-              />
-            </CardBody>
-          ))}
-        </Card>
-      </UncontrolledCollapse>
-
-      <StyledLink
-        dark={themeColor} id="scoreCard"
-        to="/scorecard"
-        activeStyle={{
-          borderLeft: "2px solid #f76f39",
-          paddingLeft: "0.3em"
-        }}
-      >
-        Score Card
-      </StyledLink>
-
-      <StyledLink
-        dark={themeColor} id="settings"
-        to="#"
-      >
-        Settings
-      </StyledLink>
-      <UncontrolledCollapse toggler="#settings">
-        <Card>
-          <CardBody>
-            <MenuItem
+      {themeColor
+        ? (
+          <Link to="/">
+            <Logo
+              onSize={(size) => { compHeightAction(size.height); }}
+              logo={blackLogo}
               dark={themeColor}
-              activeStyle={{ borderLeft: "2px solid #f76f39" }}
-              to="/usermanagment"
-            >
+            />
+          </Link>
+        ) : (
+          <Link to="/">
+            <Logo
+              onSize={(size) => { compHeightAction(size.height); }}
+              logo={whiteLogo}
+              dark={themeColor}
+            />
+          </Link>
+
+        )}
+
+      <ItemsWrapper>
+        <StyledLink
+          dark={themeColor}
+          id="home"
+          to="#"
+        >
+        Home
+        </StyledLink>
+        <UncontrolledCollapse toggler="#home">
+          <Card>
+            {ab.map(item => (
+              <CardBody key={item.id}>
+                <Item
+                  dark={themeColor} id={item.id}
+                  projectName={item.name}
+                />
+              </CardBody>
+            ))}
+          </Card>
+        </UncontrolledCollapse>
+
+        <StyledLink
+          dark={themeColor} id="scoreCard"
+          to="/scorecard"
+          activeStyle={stylesLink}
+        >
+        Score Card
+        </StyledLink>
+
+        <StyledLink
+          dark={themeColor} id="settings"
+          to="#"
+        >
+        Settings
+        </StyledLink>
+        <UncontrolledCollapse toggler="#settings">
+          <Card>
+            <CardBody>
+              <MenuItem
+                dark={themeColor}
+                activeStyle={stylesItem}
+                to="/usermanagment"
+              >
               User Managment
-            </MenuItem>
-          </CardBody>
-        </Card>
-      </UncontrolledCollapse>
+              </MenuItem>
+            </CardBody>
+          </Card>
+        </UncontrolledCollapse>
+      </ItemsWrapper>
     </MenuContent>
-    <TogglerWrapper dark={themeColor} style={{ alignSelf: "flex-end" }}>
+    <TogglerWrapper dark={themeColor}>
       <ThemeToggler />
     </TogglerWrapper>
   </Navigation>
 );
 
 SideNavbar.propTypes = {
-  themeColor: PropTypes.bool.isRequired
+  themeColor: PropTypes.bool.isRequired,
+  compHeightAction: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  themeColor: state.themeReducer.themeColor
+  themeColor: state.themeReducer.themeColor,
+  logoHeight: state.themeReducer.logoHeight
+});
+
+const mapDispatchToProps = dispatch => ({
+  compHeightAction: height => dispatch(ThemeActions.compHeightAction(height))
 });
 
 
-export default withRouter(connect(mapStateToProps)(SideNavbar));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideNavbar));

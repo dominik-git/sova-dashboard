@@ -4,10 +4,12 @@ import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import MenuItem from "./styles";
 
+const styles = { borderLeft: "2px solid #f76f39" };
+
 const Item = ({ projectName, id, themeColor }) => (
   <MenuItem
     dark={themeColor}
-    activeStyle={{ borderLeft: "2px solid #f76f39" }}
+    activeStyle={styles}
     exact to={`/project/${id}`}
   >
     {projectName}

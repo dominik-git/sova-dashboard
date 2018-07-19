@@ -2,12 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import TestActions from "Actions/test.action";
 
+
 const TestContainer = ({
   testState2,
   testState1,
   testAction1,
   testAction2
 }) => (
+
   <div>
     <div
       onClick={() => {
@@ -26,6 +28,7 @@ const TestContainer = ({
       {testState2 || " emptyString2"}
     </div>
   </div>
+
 );
 const mapStateToProps = state => ({
   testState1: state.testReducers.testState1,

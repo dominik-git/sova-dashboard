@@ -5,12 +5,11 @@ import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
 import PropTypes from "prop-types";
 import blackLogo from "Assets/gl_logo.png";
 import whiteLogo from "Assets/gl_logo_white.png";
-import { Link } from "react-router-dom";
 import ThemeToggler from "Components/ThemeToggler";
 import Logo from "Components/Logo";
 import ThemeActions from "Actions/theme.action";
+import StyledLinkComp from "Components/StyledLinkComponent";
 import Item from "../MenuItem";
-
 import {
   Navigation,
   StyledLink,
@@ -34,46 +33,38 @@ const ab = [
 
 const stylesLink = {
   borderLeft: "2px solid #f76f39",
-  paddingLeft: "0.3em"
+  paddingLeft: "0.4em"
 };
 
 const stylesItem = { borderLeft: "2px solid #f76f39" };
 
-const SideNavbar = ({ themeColor, compHeightAction }) => (
+
+const SideNavbar = ({
+  themeColor,
+  compHeightAction
+}) => (
 
   <Navigation>
     <MenuContent dark={themeColor}>
-
       {themeColor
         ? (
-          <Link to="/">
-            <Logo
-              onSize={(size) => { compHeightAction(size.height); }}
-              logo={blackLogo}
-              dark={themeColor}
-            />
-          </Link>
+          <Logo
+            onSize={(size) => { compHeightAction(size.height); }}
+            logo={blackLogo}
+            dark={themeColor}
+          />
         ) : (
-          <Link to="/">
-            <Logo
-              onSize={(size) => { compHeightAction(size.height); }}
-              logo={whiteLogo}
-              dark={themeColor}
-            />
-          </Link>
-
-
+          <Logo
+            onSize={(size) => { compHeightAction(size.height); }}
+            logo={whiteLogo}
+            dark={themeColor}
+          />
         )}
 
       <ItemsWrapper>
-        <StyledLink
-          dark={themeColor}
-          id="home"
-          to="#"
-        >
-        Home
-
-        </StyledLink>
+        <StyledLinkComp dark={themeColor} idLink="home">
+          Home
+        </StyledLinkComp>
         <UncontrolledCollapse toggler="#home">
           <Card>
             {ab.map(item => (
@@ -87,24 +78,17 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
           </Card>
         </UncontrolledCollapse>
 
-
-        <StyledLink
-          dark={themeColor} id="scoreCard"
-          to="/scorecard"
-          activeStyle={stylesLink}
+        <StyledLinkComp
+          href="/scorecard" item
+          dark={themeColor}
+          isActive={stylesLink}
         >
-        Score Card
+          Score Card
+        </StyledLinkComp>
 
-        </StyledLink>
-
-
-        <StyledLink
-          dark={themeColor} id="settings"
-          to="#"
-        >
+        <StyledLinkComp dark={themeColor} idLink="settings">
         Settings
-
-        </StyledLink>
+        </StyledLinkComp>
         <UncontrolledCollapse toggler="#settings">
           <Card>
             <CardBody>
@@ -119,6 +103,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
             </CardBody>
           </Card>
         </UncontrolledCollapse>
+
       </ItemsWrapper>
     </MenuContent>
 
@@ -131,6 +116,7 @@ const SideNavbar = ({ themeColor, compHeightAction }) => (
 SideNavbar.propTypes = {
   themeColor: PropTypes.bool.isRequired,
   compHeightAction: PropTypes.func.isRequired
+
 };
 
 const mapStateToProps = state => ({

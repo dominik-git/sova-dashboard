@@ -14,9 +14,9 @@ function compHeightAction(string) {
   };
 }
 
-function upDownAction(boolean) {
+function logoutAction(boolean) {
   return {
-    type: ThemeConst.UP_DOWN,
+    type: ThemeConst.LOGOUT,
     payload: boolean
   };
 }
@@ -24,7 +24,7 @@ function upDownAction(boolean) {
 const ThemeActions = {
   themeColorAction,
   compHeightAction,
-  upDownAction
+  logoutAction
 };
 
 export default ThemeActions;

@@ -5,14 +5,10 @@ import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
 import PropTypes from "prop-types";
 import blackLogo from "Assets/gl_logo.png";
 import whiteLogo from "Assets/gl_logo_white.png";
-import { Link } from "react-router-dom";
 import ThemeToggler from "Components/ThemeToggler";
 import Logo from "Components/Logo";
 import ThemeActions from "Actions/theme.action";
-import DropdownActions from "Actions/dropdown.action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
 import Item from "../MenuItem";
 
 import {
@@ -55,26 +51,19 @@ const SideNavbar = ({
 
   <Navigation>
     <MenuContent dark={themeColor}>
-
       {themeColor
         ? (
-          <Link to="/">
             <Logo
               onSize={(size) => { compHeightAction(size.height); }}
               logo={blackLogo}
               dark={themeColor}
             />
-          </Link>
         ) : (
-          <Link to="/">
             <Logo
               onSize={(size) => { compHeightAction(size.height); }}
               logo={whiteLogo}
               dark={themeColor}
             />
-          </Link>
-
-
         )}
 
       <ItemsWrapper>
@@ -84,7 +73,6 @@ const SideNavbar = ({
           id="home"
           to="#"
         >
-        
           <span style={{ paddingRight: 5 }}>
 Home
           </span>
@@ -108,7 +96,6 @@ Home
           </Card>
         </UncontrolledCollapse>
 
-
         <StyledLink
           dark={themeColor} id="scoreCard"
           to="/scorecard"
@@ -118,13 +105,11 @@ Home
 
         </StyledLink>
 
-
         <StyledLink
           onClick={() => settingsDropdownAction(!settingsDropdown)}
           dark={themeColor} id="settings"
           to="#"
         >
-        
           <span style={{ paddingRight: 5 }}>
 Settings
           </span>

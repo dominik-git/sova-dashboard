@@ -15,37 +15,31 @@ export const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
   transition: all 0.2s linear;
-  
 `;
 
 export const StyledLink = styled(NavLink)`
   width: 100%;
   text-transform: uppercase;
- 
   padding: 0.3em 0;
   display: inline-block;
   text-decoration: none;
-  
-  color: ${({ dark }) => (dark ? props => props.theme.darkColor.darkGrey : props => props.theme.neutralColor.white)};
+  color: ${({ dark }) => (dark ? ({ theme }) => theme.darkColor.darkGrey : ({ theme }) => theme.neutralColor.white)};
   font-size: 1.15em;
   transition: all 0.15s ease-in-out;
   font-weight: 600;
   &:hover {
     text-decoration: none;
-    
-    color: ${({ dark }) => (dark ? props => props.theme.neutralColor.grey : props => props.theme.lightColor.lighterGrey)};
+    color: ${({ dark }) => (dark ? ({ theme }) => theme.neutralColor.grey : ({ theme }) => theme.lightColor.lighterGrey)};
   }
   &:focus {
     text-decoration: none;
-    
-    color: ${({ dark }) => (dark ? props => props.theme.darkColor.darkGrey :  props => props.theme.neutralColor.white)};
+    color: ${({ dark }) => (dark ? ({ theme }) => theme.darkColor.darkGrey : ({ theme }) => theme.neutralColor.white)};
   }
 `;
 
 export const MenuContent = styled.div`
   transition: all 0.2s linear;
-  
-  background: ${({ dark }) => (dark ? props => props.theme.darkColor.bgNavbar : props => props.theme.lightColor.bgNavbar)};
+  background: ${({ dark }) => (dark ? ({ theme }) => theme.darkColor.bgNavbar : ({ theme }) => theme.lightColor.bgNavbar)};
   width: 100%;
   height: calc(100% + 6em);
   padding: 3em;
@@ -54,13 +48,11 @@ export const MenuContent = styled.div`
 export const ItemsWrapper = styled.div`
   padding-top: 2em;
   border-top: 2px solid #f76f39;
-
 `;
 
 export const MenuItem = styled(NavLink)`
   transition: all 0.2s linear;
- 
-  color: ${({ dark }) => (dark ? props => props.theme.darkColor.darkGrey : props => props.theme.neutralColor.white)};
+  color: ${({ dark }) => (dark ? ({ theme }) => theme.darkColor.darkGrey : ({ theme }) => theme.neutralColor.white)};
   cursor: pointer;
   width: 100%;
   display: inline-block;
@@ -68,23 +60,19 @@ export const MenuItem = styled(NavLink)`
   font-size: 1.15em;
   &:hover {
     text-decoration: none;
-    
-    color: ${({ dark }) => (dark ? props =>props.theme.lightColor.lightGrey : props =>props.theme.lightColor.lighterGrey)};
+    color: ${({ dark }) => (dark ? ({ theme }) => theme.lightColor.lightGrey : ({ theme }) => theme.lightColor.lighterGrey)};
   }
   &:focus {
-    
-    color: ${({ dark }) => (dark ? props => props.theme.darkColor.darkGrey :  props => props.theme.neutralColor.white)};
+    color: ${({ dark }) => (dark ? ({ theme }) => theme.darkColor.darkGrey : ({ theme }) => theme.neutralColor.white)};
     text-decoration: none;
-    
-    border-left: 1px solid ${({ dark }) => (dark ? props => props.theme.darkColor.darkGrey :  props => props.theme.neutralColor.white)};
+    border-left: 1px solid ${({ dark }) => (dark ? ({ theme }) => theme.darkColor.darkGrey : ({ theme }) => theme.neutralColor.white)};
   }
 `;
 
 export const TogglerWrapper = styled.div`
   align-self: flex-end;
   transition: all 0.2s linear;
-  
-  background: ${({ dark }) => (dark ? props => props.theme.darkColor.bgNavbar : props => props.theme.lightColor.bgNavbar)};
+  background: ${({ dark }) => (dark ? ({ theme }) => theme.darkColor.bgNavbar : ({ theme }) => theme.lightColor.bgNavbar)};
   width: 100%;
   display: flex;
   justify-content: center;

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { UncontrolledCollapse, Card } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import DropdownActions from "Actions/dropdown.action";
+import ThemeAction from "Actions/theme.action";
 import {
   Wrapper, UserIcon, Letter, Logout
 } from "./styles";
@@ -13,12 +13,12 @@ const TopMenu = ({
 }) => (
   <Wrapper height={logoHeight}>
     <UserIcon
-      onClick={() => logoutAction(!logout)}
       height={logoHeight}
     >
       <Letter
         dark={themeColor}
         id="logout"
+        onClick={() => logoutAction(!logout)}
       >
         <span style={{ paddingRight: 5 }}>
 Hello Dominik
@@ -55,11 +55,11 @@ TopMenu.propTypes = {
 const mapStateToProps = state => ({
   logoHeight: state.themeReducer.logoHeight,
   themeColor: state.themeReducer.themeColor,
-  logout: state.dropdownReducer.logout
+  logout: state.themeReducer.logout
 });
 
 const mapDispatchToProps = dispatch => ({
-  logoutAction: icon => dispatch(DropdownActions.logoutAction(icon))
+  logoutAction: icon => dispatch(ThemeAction.logoutAction(icon))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopMenu);

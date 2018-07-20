@@ -14,9 +14,17 @@ function compHeightAction(string) {
   };
 }
 
+function logoutAction(boolean) {
+  return {
+    type: ThemeConst.LOGOUT,
+    payload: boolean
+  };
+}
+
 const ThemeActions = {
   themeColorAction,
-  compHeightAction
+  compHeightAction,
+  logoutAction
 };
 
 export default ThemeActions;

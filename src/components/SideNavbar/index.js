@@ -8,9 +8,8 @@ import whiteLogo from "Assets/gl_logo_white.png";
 import ThemeToggler from "Components/ThemeToggler";
 import Logo from "Components/Logo";
 import ThemeActions from "Actions/theme.action";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import StyledLinkComp from "Components/StyledLinkComponent";
 import Item from "../MenuItem";
-
 import {
   Navigation,
   StyledLink,
@@ -42,47 +41,30 @@ const stylesItem = { borderLeft: "2px solid #f76f39" };
 
 const SideNavbar = ({
   themeColor,
-  compHeightAction,
-  homeDropdown,
-  homeDropdownAction,
-  settingsDropdown,
-  settingsDropdownAction
+  compHeightAction
 }) => (
 
   <Navigation>
     <MenuContent dark={themeColor}>
       {themeColor
         ? (
-            <Logo
-              onSize={(size) => { compHeightAction(size.height); }}
-              logo={blackLogo}
-              dark={themeColor}
-            />
+          <Logo
+            onSize={(size) => { compHeightAction(size.height); }}
+            logo={blackLogo}
+            dark={themeColor}
+          />
         ) : (
-            <Logo
-              onSize={(size) => { compHeightAction(size.height); }}
-              logo={whiteLogo}
-              dark={themeColor}
-            />
+          <Logo
+            onSize={(size) => { compHeightAction(size.height); }}
+            logo={whiteLogo}
+            dark={themeColor}
+          />
         )}
 
       <ItemsWrapper>
-        <StyledLink
-          onClick={() => homeDropdownAction(!homeDropdown)}
-          dark={themeColor}
-          id="home"
-          to="#"
-        >
-          <span style={{ paddingRight: 5 }}>
-Home
-          </span>
-          {
-          homeDropdown
-            ? <FontAwesomeIcon icon="caret-up" />
-            : <FontAwesomeIcon icon="caret-down" />
-        }
-
-        </StyledLink>
+        <StyledLinkComp dark={themeColor} idLink="home">
+          Home
+        </StyledLinkComp>
         <UncontrolledCollapse toggler="#home">
           <Card>
             {ab.map(item => (
@@ -96,30 +78,17 @@ Home
           </Card>
         </UncontrolledCollapse>
 
-        <StyledLink
-          dark={themeColor} id="scoreCard"
-          to="/scorecard"
-          activeStyle={stylesLink}
+        <StyledLinkComp
+          href="/scorecard" item
+          dark={themeColor}
+          isActive={stylesLink}
         >
-        Score Card
+          Score Card
+        </StyledLinkComp>
 
-        </StyledLink>
-
-        <StyledLink
-          onClick={() => settingsDropdownAction(!settingsDropdown)}
-          dark={themeColor} id="settings"
-          to="#"
-        >
-          <span style={{ paddingRight: 5 }}>
-Settings
-          </span>
-          {
-          settingsDropdown
-            ? <FontAwesomeIcon icon="caret-up" />
-            : <FontAwesomeIcon icon="caret-down" />
-        }
-
-        </StyledLink>
+        <StyledLinkComp dark={themeColor} idLink="settings">
+        Settings
+        </StyledLinkComp>
         <UncontrolledCollapse toggler="#settings">
           <Card>
             <CardBody>
@@ -134,6 +103,7 @@ Settings
             </CardBody>
           </Card>
         </UncontrolledCollapse>
+
       </ItemsWrapper>
     </MenuContent>
 
@@ -145,24 +115,17 @@ Settings
 
 SideNavbar.propTypes = {
   themeColor: PropTypes.bool.isRequired,
-  compHeightAction: PropTypes.func.isRequired,
-  homeDropdown: PropTypes.bool.isRequired,
-  homeDropdownAction: PropTypes.func.isRequired,
-  settingsDropdown: PropTypes.bool.isRequired,
-  settingsDropdownAction: PropTypes.func.isRequired
+  compHeightAction: PropTypes.func.isRequired
+
 };
 
 const mapStateToProps = state => ({
   themeColor: state.themeReducer.themeColor,
-  logoHeight: state.themeReducer.logoHeight,
-  homeDropdown: state.dropdownReducer.home,
-  settingsDropdown: state.dropdownReducer.settings
+  logoHeight: state.themeReducer.logoHeight
 });
 
 const mapDispatchToProps = dispatch => ({
-  compHeightAction: height => dispatch(ThemeActions.compHeightAction(height)),
-  homeDropdownAction: home => dispatch(DropdownActions.homeAction(home)),
-  settingsDropdownAction: settings => dispatch(DropdownActions.settingsAction(settings))
+  compHeightAction: height => dispatch(ThemeActions.compHeightAction(height))
 });
 
 

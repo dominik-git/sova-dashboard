@@ -1,8 +1,9 @@
 import ThemeConst from "Consts/theme.const";
 
 const initialState = {
-  themeColor: true,
-  logoHeight: ""
+  themeColor: false,
+  logoHeight: "",
+  logout: true
 };
 
 function themeReducer(state = initialState, action = {}) {
@@ -15,6 +16,11 @@ function themeReducer(state = initialState, action = {}) {
     case ThemeConst.COMP_HEIGHT:
       return Object.assign({}, state, {
         logoHeight: action.payload
+      });
+
+    case ThemeConst.LOGOUT:
+      return Object.assign({}, state, {
+        logout: action.payload
       });
 
     default:

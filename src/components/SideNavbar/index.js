@@ -12,7 +12,6 @@ import StyledLinkComp from "Components/StyledLinkComponent";
 import Item from "../MenuItem";
 import {
   Navigation,
-  StyledLink,
   MenuContent,
   TogglerWrapper,
   MenuItem,

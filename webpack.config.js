@@ -84,7 +84,17 @@ module.exports = {
     ]
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    },
+    proxy: {
+      "/api/**": {
+        target: "http://172.17.113.70:8089",
+        secure: false,
+        changeOrigin: true
+      }
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -45,7 +45,7 @@ Hello Dominik
 
 
 TopMenu.propTypes = {
-  logoHeight: PropTypes.number.isRequired,
+  logoHeight: PropTypes.string.isRequired,
   themeColor: PropTypes.bool.isRequired,
   logout: PropTypes.bool.isRequired,
   logoutAction: PropTypes.func.isRequired

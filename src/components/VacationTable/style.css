@@ -1,0 +1,23 @@
+.pagination>.active>a{
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #f76f39;
+    border-color: #f1f1f1;
+}
+th {
+    background: rgb(255,255,255);
+}
+
+td {
+    width: 25%;
+}
+
+.react-bs-table-pagination{
+    width: 100%;
+    margin:0;
+}
+
+.table{
+    margin-bottom: 0;
+}

@@ -12,7 +12,6 @@ import {
   Navigation,
   MenuContent,
   TogglerWrapper,
-  MenuItem,
   ItemsWrapper
 } from "./styles";
 
@@ -26,14 +25,6 @@ const ab = [
     id: 2
   }
 ];
-
-
-const stylesLink = {
-  borderLeft: "2px solid #f76f39",
-  paddingLeft: "0.4em"
-};
-
-const stylesItem = { borderLeft: "2px solid #f76f39" };
 
 
 const SideNavbar = ({
@@ -58,6 +49,7 @@ const SideNavbar = ({
           />
         )}
 
+     
       <ItemsWrapper>
         <SelectMenu />
 

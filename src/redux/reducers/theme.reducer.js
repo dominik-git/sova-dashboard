@@ -3,7 +3,7 @@ import ThemeConst from "Consts/theme.const";
 const initialState = {
   themeColor: false,
   logoHeight: "",
-  logout: true
+  logout: false
 };
 
 function themeReducer(state = initialState, action = {}) {

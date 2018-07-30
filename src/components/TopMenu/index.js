@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+
 import StyledLinkComponent from "Components/StyledLinkComponent";
 import { withRouter } from "react-router";
 import theme from "../../styles/themes/default";
 
 import {
+
   Wrapper, LinkWrapper
 } from "./styles";
 
@@ -16,19 +18,23 @@ const activeClass = {
 };
 
 const TopMenu = ({
+  
   logoHeight, themeColor
 }) => (
   <Wrapper height={logoHeight}>
+   
 
     <LinkWrapper height={logoHeight}>
       <StyledLinkComponent
         href="/reliability" item
         dark={themeColor} isActive={activeClass}
       >
+    
           Reliability
       </StyledLinkComponent>
     </LinkWrapper>
 
+   
     <LinkWrapper height={logoHeight}>
       <StyledLinkComponent
         href="/velocity" item
@@ -38,6 +44,7 @@ const TopMenu = ({
       </StyledLinkComponent>
     </LinkWrapper>
 
+    
     <LinkWrapper height={logoHeight}>
       <StyledLinkComponent
         href="/resource" item
@@ -46,6 +53,7 @@ const TopMenu = ({
           Resource
       </StyledLinkComponent>
     </LinkWrapper>
+
 
     <LinkWrapper height={logoHeight}>
       <StyledLinkComponent
@@ -61,13 +69,16 @@ const TopMenu = ({
 
 
 TopMenu.propTypes = {
-  logoHeight: PropTypes.number.isRequired,
+
+  logoHeight: PropTypes.string.isRequired,
   themeColor: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
   logoHeight: state.themeReducer.logoHeight,
+ 
   themeColor: state.themeReducer.themeColor
 });
+
 
 export default withRouter(connect(mapStateToProps, null)(TopMenu));

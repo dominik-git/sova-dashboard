@@ -7,6 +7,7 @@ import whiteLogo from "Assets/gl_logo_white.png";
 import ThemeToggler from "Components/ThemeToggler";
 import Logo from "Components/Logo";
 import ThemeActions from "Actions/theme.action";
+import SelectMenu from "Components/SelectMenu";
 import {
   Navigation,
   MenuContent,
@@ -24,6 +25,7 @@ const ab = [
     id: 2
   }
 ];
+
 
 const SideNavbar = ({
   themeColor,
@@ -47,7 +49,11 @@ const SideNavbar = ({
           />
         )}
 
-      <ItemsWrapper />
+     
+      <ItemsWrapper>
+        <SelectMenu />
+
+      </ItemsWrapper>
     </MenuContent>
 
     <TogglerWrapper dark={themeColor}>

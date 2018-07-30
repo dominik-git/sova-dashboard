@@ -1,18 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
 import PropTypes from "prop-types";
 import blackLogo from "Assets/gl_logo.png";
 import whiteLogo from "Assets/gl_logo_white.png";
 import ThemeToggler from "Components/ThemeToggler";
 import Logo from "Components/Logo";
 import ThemeActions from "Actions/theme.action";
-import StyledLinkComp from "Components/StyledLinkComponent";
-import Item from "../MenuItem";
+import SelectMenu from "Components/SelectMenu";
 import {
   Navigation,
-  StyledLink,
   MenuContent,
   TogglerWrapper,
   MenuItem,
@@ -62,47 +59,7 @@ const SideNavbar = ({
         )}
 
       <ItemsWrapper>
-        <StyledLinkComp dark={themeColor} idLink="home">
-          Home
-        </StyledLinkComp>
-        <UncontrolledCollapse toggler="#home">
-          <Card>
-            {ab.map(item => (
-              <CardBody key={item.id}>
-                <Item
-                  dark={themeColor} id={item.id}
-                  projectName={item.name}
-                />
-              </CardBody>
-            ))}
-          </Card>
-        </UncontrolledCollapse>
-
-        <StyledLinkComp
-          href="/scorecard" item
-          dark={themeColor}
-          isActive={stylesLink}
-        >
-          Score Card
-        </StyledLinkComp>
-
-        <StyledLinkComp dark={themeColor} idLink="settings">
-        Settings
-        </StyledLinkComp>
-        <UncontrolledCollapse toggler="#settings">
-          <Card>
-            <CardBody>
-              <MenuItem
-                dark={themeColor}
-                activeStyle={stylesItem}
-                to="/usermanagment"
-              >
-              User Managment
-
-              </MenuItem>
-            </CardBody>
-          </Card>
-        </UncontrolledCollapse>
+        <SelectMenu />
 
       </ItemsWrapper>
     </MenuContent>

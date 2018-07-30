@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import SideNavbar from "Components/SideNavbar";
 import TestPage from "Containers/testPage";
 import TopMenu from "Components/TopMenu";
-
 import { Wrapper, DashboardWrapper } from "./style";
 
 
@@ -13,7 +12,6 @@ const Dashboard = ({ themeColor }) => (
 
   <DashboardWrapper>
     <SideNavbar />
-
     <Wrapper dark={themeColor}>
       <TopMenu />
       <Switch>

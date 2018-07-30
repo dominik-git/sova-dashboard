@@ -1,65 +1,73 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { UncontrolledCollapse, Card } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ThemeAction from "Actions/theme.action";
+import StyledLinkComponent from "Components/StyledLinkComponent";
+import { withRouter } from "react-router";
+import theme from "../../styles/themes/default";
+
 import {
-  Wrapper, UserIcon, Letter, Logout
+  Wrapper, LinkWrapper
 } from "./styles";
 
+const activeClass = {
+  background: theme.neutralColor.orange,
+  color: "white",
+  fontSize: "1.2em"
+};
+
 const TopMenu = ({
-  logoHeight, themeColor, logout, logoutAction
+  logoHeight, themeColor
 }) => (
   <Wrapper height={logoHeight}>
-    <UserIcon
-      height={logoHeight}
-    >
-      <Letter
-        dark={themeColor}
-        id="logout"
-        onClick={() => logoutAction(!logout)}
+
+    <LinkWrapper height={logoHeight}>
+      <StyledLinkComponent
+        href="/reliability" item
+        dark={themeColor} isActive={activeClass}
       >
-        <span style={{ paddingRight: 5 }}>
-Hello Dominik
-        </span>
-        {
-          logout
-            ? <FontAwesomeIcon icon="caret-up" />
-            : <FontAwesomeIcon icon="caret-down" />
-        }
+          Reliability
+      </StyledLinkComponent>
+    </LinkWrapper>
 
-      </Letter>
+    <LinkWrapper height={logoHeight}>
+      <StyledLinkComponent
+        href="/velocity" item
+        dark={themeColor} isActive={activeClass}
+      >
+          Velocity
+      </StyledLinkComponent>
+    </LinkWrapper>
 
-      <UncontrolledCollapse toggler="#logout">
-        <Card>
-          <Logout dark={themeColor}>
-            Logout
-          </Logout>
-        </Card>
-      </UncontrolledCollapse>
+    <LinkWrapper height={logoHeight}>
+      <StyledLinkComponent
+        href="/resource" item
+        dark={themeColor} isActive={activeClass}
+      >
+          Resource
+      </StyledLinkComponent>
+    </LinkWrapper>
 
-    </UserIcon>
+    <LinkWrapper height={logoHeight}>
+      <StyledLinkComponent
+        href="/training" item
+        dark={themeColor}
+        isActive={activeClass}
+      >
+          Training
+      </StyledLinkComponent>
+    </LinkWrapper>
   </Wrapper>
 );
 
 
 TopMenu.propTypes = {
   logoHeight: PropTypes.number.isRequired,
-  themeColor: PropTypes.bool.isRequired,
-  logout: PropTypes.bool.isRequired,
-  logoutAction: PropTypes.func.isRequired
-
+  themeColor: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
   logoHeight: state.themeReducer.logoHeight,
-  themeColor: state.themeReducer.themeColor,
-  logout: state.themeReducer.logout
+  themeColor: state.themeReducer.themeColor
 });
 
-const mapDispatchToProps = dispatch => ({
-  logoutAction: icon => dispatch(ThemeAction.logoutAction(icon))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TopMenu);
+export default withRouter(connect(mapStateToProps, null)(TopMenu));
